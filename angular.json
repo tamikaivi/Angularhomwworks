@@ -3,5 +3,128 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ramen": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ramen",
+      "sourceRoot": "projects/ramen/src",
+      "prefix": "ramen",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ramen",
+            "index": "projects/ramen/src/index.html",
+            "main": "projects/ramen/src/main.ts",
+            "polyfills": "projects/ramen/src/polyfills.ts",
+            "tsConfig": "projects/ramen/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/ramen/src/favicon.ico",
+              "projects/ramen/src/assets"
+            ],
+            "styles": [
+              "projects/ramen/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ramen/src/environments/environment.ts",
+                  "with": "projects/ramen/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ramen:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ramen:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ramen:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ramen/src/test.ts",
+            "polyfills": "projects/ramen/src/polyfills.ts",
+            "tsConfig": "projects/ramen/tsconfig.spec.json",
+            "karmaConfig": "projects/ramen/karma.conf.js",
+            "assets": [
+              "projects/ramen/src/favicon.ico",
+              "projects/ramen/src/assets"
+            ],
+            "styles": [
+              "projects/ramen/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ramen/tsconfig.app.json",
+              "projects/ramen/tsconfig.spec.json",
+              "projects/ramen/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ramen/e2e/protractor.conf.js",
+            "devServerTarget": "ramen:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ramen:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "cli": {
+    "analytics": false
+  },
+  "defaultProject": "ramen"
 }
