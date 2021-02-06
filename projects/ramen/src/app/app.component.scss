@@ -1,0 +1,85 @@
+:host {
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+.google_header {
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1px 2rem 1px 2rem;
+    align-items: center;
+    svg {
+        height: 2.5rem;
+        width: 80px;
+    }
+    &__user {
+        background-color: var(--colorbackground);
+        border-radius: 50%;
+        svg {
+            height: 0.8rem;
+            width: 0.8rem;
+        }
+    }
+}
+
+.google_body {
+    &__head {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem 5rem 2rem 5rem;
+        svg {
+            height: 5rem;
+            width: 5rem;
+        }
+        &__first {
+            display: flex;
+            flex-direction: row;
+            &__iconclouthes {
+                display: flex;
+                flex-direction: row;
+                background-color: var(--primary-color);
+                border-radius: 50%;
+                justify-content: center;
+                align-items: center;
+                height: 5rem;
+                width: 5rem;
+                svg {
+                    height: 1rem;
+                    width: 1rem;
+                }
+                 :hover {
+                    height: 10rem;
+                    width: 10rem;
+                    background-color: white;
+                }
+            }
+        }
+        &__second {
+            display: flex;
+            flex-direction: row;
+            &__iconwater {
+                background-color: var(--secondary-color);
+                border-radius: 50%;
+            }
+        }
+    }
+    &__text {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1rem 10rem 1rem 10rem;
+        svg {
+            width: 20rem;
+            height: 10rem;
+        }
+    }
+}
